@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>模版语法</title>
+    </head>
+    <body>
+
+        <div id="app" v-on:click="divClick">
+            button按钮
+        </div>
+
+        <div id="app-2">
+            {{message}}
+        </div>
+
+
+        <!-- 引入 vue.js -->
+        <script src="../vue.js"></script>
+        <script>
+            var vm = new Vue ({
+                el: '#app',
+                data: {
+                    divClick: function () {
+                        console.log('哈哈！')
+                    }
+                }
+            })
+
+            var vm2 = new Vue ({
+                el: '#app-2',
+                data: {
+                    message: '吃吃吃吃吃吃'
+                }
+            })
+
+
+
+        </script>
+
+
+
+        </script>
+    </body>
+</html>

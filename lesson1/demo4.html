@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Class与Style绑定</title>
+    </head>
+    <body>
+
+        <div class="static1" v-bind:class="{ active: isActive, 'text-danger': hasError }">哈哈哈</div>
+        <div class="static2" v-bind:class="classObject">哈哈哈</div>
+        <div class="static3" v-bind:class="classObject">哈哈哈</div>
+
+
+
+        <!-- 引入 vue.js -->
+        <script src="../vue.js"></script>
+        <script>
+    // 一. 绑定 HTML Class
+            // 1.对象语法
+            var vm1 = new Vue({
+                el: '.static1',
+                data: {
+                  isActive: true,
+                  error: null
+                }
+            })
+
+            var vm2 = new Vue({
+                el: '.static2',
+                data: {
+                    classObject: {
+                        active: true,
+                       'text-danger': false
+                    }
+                }
+            })
+
+            var vm3 = new Vue({  //计算属性
+                el: '.static3',
+                data: {
+                  isActive: true,
+                  error: null
+                },
+                computed: {
+                  classObject: function () {
+                    return {
+                      active: this.isActive && !this.error,
+                      'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                  }
+                }
+            })
+
+            // 2.对象语法
+
+
+
+        </script>
+
+    </body>
+</html>

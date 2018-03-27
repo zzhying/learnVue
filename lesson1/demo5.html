@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>v-for</title>
+    </head>
+    <body>
+
+
+
+        <div>******************************************  1  *****************************************************</div>
+
+        <div id="example1">
+            <p v-for="(item, index) in items">
+                {{ index }}  -  {{ item.message }}
+            </p>
+        </div>
+
+        <div>******************************************  2  *****************************************************</div>
+
+        <ul id="example2">
+            <template v-for="item in items">
+                <li>{{ item.message }}</li>
+                <li class="divider"></li>
+            </template>
+        </ul>
+
+        <div>******************************************  3  *****************************************************</div>
+
+        <ul id="example3">
+            <li v-for="todo in todos" v-if="!todo.isComplete">
+              {{ todo.message }}
+            </li>
+        </ul>
+
+
+        <div>******************************************  4  *****************************************************</div>
+
+        <ul class="example4" v-if="todos.length">
+            <li v-for="todo in todos">
+                {{ todo.message }}
+            </li>
+        </ul>
+        <p v-else>No todos left!</p>
+
+
+        <!-- 引入 vue.js -->
+        <script src="../vue.js"></script>
+        <script>
+            var vm = new Vue ({
+                el: '#example1',
+                data: {
+                    items: [
+                     { message: 'Foo' },
+                     { message: 'Bar' }
+                   ]
+                }
+            })
+
+            vm.items.push({ message: 'Baz' })
+
+            // vm.items = vm.items.filter(function (item) {
+            //   return item.message.match(/Foo/)
+            // })
+
+            Vue.set(vm.items, 1, "HAHA")
+            vm.$set(vm.items, 1, 'HAHA')
+
+
+            var vm2 = new Vue ({
+                el: '#example2',
+                data: {
+                    items: [
+                     { message: 'Foo' },
+                     { message: 'Bar' }
+                   ]
+                }
+            })
+
+
+            var vm3 = new Vue ({
+                el: '#example3',
+                data: {
+                    todos: [
+                     {
+                         isComplete: true,
+                         message: 'Foo'
+                     },{
+                         isComplete: false,
+                         message: 'Bar'
+
+                     }
+                   ]
+                }
+            })
+
+            var vm4 = new Vue ({
+                el: '.example4',
+                data: {
+                    todos: [
+                     {
+                         isComplete: true,
+                         message: 'Foo'
+                     },{
+                         isComplete: false,
+                         message: 'Bar'
+
+                     }
+                   ]
+                }
+            })
+
+
+        </script>
+
+    </body>
+</html>
