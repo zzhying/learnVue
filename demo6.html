@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>v-for</title>
+    </head>
+    <body>
+
+        <div>
+          Hello world!
+        </div>
+
+        <script>
+
+        /*------------------------------------------------*/
+            var a = [];
+            for (var i = 0; i < 10; i++) {
+              a[i] = function () {
+                console.log(i);
+              };
+            }
+            a[6](); // 10
+
+            var a = [];
+            for (let i = 0; i < 10; i++) {
+              a[i] = function () {
+                console.log(i);
+              };
+            }
+            a[6](); // 6
+
+            /*------------------------------------------------*/
+            // var 的情况
+            // console.log(foo); // 输出undefined
+            // var foo = 2;
+
+            // let 的情况
+            // console.log(bar); // 报错ReferenceError
+            // let bar = 2;
+
+            /*------------------------------------------------*/
+
+            // 内层变量覆盖外层变量
+            // var tmp = new Date();
+            // function f() {
+            //   console.log(tmp);
+            //   if (false) {
+            //     var tmp = 'hello world';
+            //   }
+            // }
+            //
+            // f(); // undefined
+
+            /*------------------------------------------------*/
+            // 取到顶层对象
+            // 方法一
+            // (typeof window !== 'undefined'
+            //    ? window
+            //    : (typeof process === 'object' &&
+            //       typeof require === 'function' &&
+            //       typeof global === 'object')
+            //      ? global
+            //      : this);
+
+            // 方法二
+            var getGlobal = function () {
+              if (typeof self !== 'undefined') { return self; }
+              if (typeof window !== 'undefined') { return window; }
+              if (typeof global !== 'undefined') { return global; }
+              throw new Error('unable to locate global object');
+            };
+            console.log(getGlobal())
+
+            /*------------------------------------------------*/
+
+
+let {toString: s} = 123;
+console.log(s === Number.prototype.toString)
+
+
+
+        </script>
+
+    </body>
+</html>
